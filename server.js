@@ -5,7 +5,7 @@ import colors from 'colors'
 import dotenv from 'dotenv'
 
 import router from './routes/users.js'
-import { errorHandler, notFound } from './middlewares/errorHandler.js'
+import { errorHandler, notFound } from './middlewares/index.js'
 
 dotenv.config()
 
@@ -18,8 +18,8 @@ dbConnect()
 // validate json (req.body) otherwise we'll get 'undefined'
 app.use(express.json())
 
-
-app.use('/', router)
+// app.use(authMiddleware)
+app.use('/api/users', router)
 
 app.use(notFound)
 app.use(errorHandler)

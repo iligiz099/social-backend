@@ -2,8 +2,7 @@
 
 export const notFound = (req, res, next) => {
     const message = new Error(`This page doesn't exist! ${req.originalUrl}`)
-    console.log('request')
-    next(message)
+    throw message
 }
 
 export const errorHandler = (err, req, res, next) => {
